@@ -46,7 +46,7 @@ export default function ToDoADD() {
                 <input value={priceState} type={'text'} name={'price_input'}
                        onChange={(e) => setPriceState(Number(e.target.value))}/>
                 <button onClick={onSave}>Save</button>
-                {todoEditID != 0 && <button onClick={onCancel}>Cancel</button>}
+                {todoEditID !== 0 && <button onClick={onCancel}>Cancel</button>}
             </form>
         </>
     )
