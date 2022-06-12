@@ -1,13 +1,17 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {todoAdded, todoEdit, todoChange} from '../components/badges'
+import {setFilter} from '../components/filter'
 
 export default function ToDoADD() {
     const [serviceState, setServiceState] = useState('')
     const [priceState, setPriceState] = useState(0)
+
     const dispatch = useDispatch();
     const todoEditID = useSelector((store) => store.todosStore.edit)
     const todos = useSelector((store) => store.todosStore.todos)
+
+    let timeoutID = undefined;
 
     useEffect(() => {
         if (todoEditID === 0) {
@@ -38,9 +42,18 @@ export default function ToDoADD() {
         setPriceState(0)
     }
 
+    const filterChange = (e) => {
+        clearTimeout(timeoutID)
+        timeoutID = setTimeout(() => {
+            dispatch(setFilter({value: e.target.value}))
+        }, 1000)
+    }
+
     return (
         <>
             <form>
+                <input type={'text'} name={'filter_input'}
+                       onChange={filterChange}/>
                 <input value={serviceState} type={'text'} name={'service_input'}
                        onChange={(e) => setServiceState(e.target.value)}/>
                 <input value={priceState} type={'text'} name={'price_input'}

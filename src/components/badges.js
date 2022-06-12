@@ -20,11 +20,9 @@ const todosSlice = createSlice({
                 const index = state.todos.findIndex(element => element.id === action.payload.id)
                 state.todos.splice(index, 1)
             },
-
             todoEdit(state, action) {
                 state.edit = action.payload.id
             },
-
             todoChange(state, action) {
                 const todo = state.todos.find(element => element.id === action.payload.id)
                 todo.text = action.payload.text;
