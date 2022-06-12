@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {todoAdded, todoEdit, todoChange} from '../components/badges'
 import {setFilter} from '../components/filter'
 
-export default function ToDoADD() {
+export default function TodoHeader() {
     const [serviceState, setServiceState] = useState('')
     const [priceState, setPriceState] = useState(0)
 
